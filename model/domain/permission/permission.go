@@ -11,9 +11,7 @@ type Permission struct {
 }
 
 type PermissionRepository interface {
-	Create(data *Permission) error
+	Upsert(data *Permission) error
 
-	Update(data *Permission) error
-
-	ReadOne(SubAdminId string) (*Permission, error)
+	ReadOne(sub_admin_id string) (*Permission, error)
 }

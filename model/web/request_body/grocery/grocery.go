@@ -26,3 +26,15 @@ type ByCategory struct {
 type ByKeyword struct {
 	Keyword string `json:"keyword"`
 }
+
+type SetOrUpdatePrice struct {
+	ID         string `json:"id"`
+	Price      int    `json:"price"`
+	DomicileID string `json:"domicile_id"`
+}
+
+type CreateOrDeleteGroceryImage struct {
+	ID        string `json:"id"`
+	Source    string `json:"source"`
+	GroceryID string `json:"grocery_id"`
+}
