@@ -13,17 +13,21 @@ type Cart struct {
 }
 
 type CartService interface {
-	Add(body request_body.BasicAction) response.HTTPResponse
+	Add(body *request_body.BasicAction) *response.HTTPResponse
 
-	Delete(body request_body.BasicAction) response.HTTPResponse
+	Delete(body *request_body.BasicAction) *response.HTTPResponse
 
-	UpdateQuantity(body request_body.UpdateQuantity) response.HTTPResponse
+	UpdateQuantity(body *request_body.UpdateQuantity) *response.HTTPResponse
+
+	GetCart(body *request_body.ReadCart) *response.HTTPResponse
 }
 
 type CartRepository interface {
-	Create(body request_body.BasicAction) (*Cart, error)
+	Create(data *request_body.BasicAction) (*Cart, error)
 
-	Delete(body request_body.BasicAction) error
+	Delete(data *request_body.BasicAction) error
 
-	UpdateQuantity(body request_body.UpdateQuantity) error
+	UpdateQuantity(data *request_body.UpdateQuantity) error
+
+	ReadCart(data *request_body.ReadCart) ([]Cart, error)
 }

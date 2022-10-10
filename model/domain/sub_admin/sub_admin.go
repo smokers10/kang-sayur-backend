@@ -29,13 +29,13 @@ type SubAdminService interface {
 }
 
 type SubAdminRepository interface {
-	Create(body *request_body.Create) error
+	Create(data *request_body.Create) error
 
 	Read() ([]SubAdmin, error)
 
-	Update(body *request_body.Update)
+	Update(data *request_body.Update) error
 
-	UpdateStatus(body *request_body.SetPermission)
+	UpdateStatus(data *request_body.SetPermission) error
 
-	Delete(body *request_body.Delete)
+	Delete(data *request_body.Delete) error
 }

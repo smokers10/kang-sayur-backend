@@ -38,19 +38,19 @@ type GroceryService interface {
 }
 
 type GroceryRepository interface {
-	Create(body *request_body.Create) error
+	Create(data *request_body.Create) error
 
-	Read(body *request_body.Create) ([]Grocery, error)
+	Read(data *request_body.Create) ([]Grocery, error)
 
-	ReadByCategory(body *request_body.ByCategory) ([]Grocery, error)
+	ReadByCategory(data *request_body.ByCategory) ([]Grocery, error)
 
-	ReadByKeyword(body *request_body.ByKeyword) ([]Grocery, error)
+	ReadByKeyword(data *request_body.ByKeyword) ([]Grocery, error)
 
 	ReadCheapest() ([]Grocery, error)
 
 	ReadBestSeller() ([]Grocery, error)
 
-	Update(body *request_body.UpdateOrDelete) error
+	Update(data *request_body.UpdateOrDelete) error
 
-	Delete(body *request_body.UpdateOrDelete) error
+	Delete(data *request_body.UpdateOrDelete) error
 }

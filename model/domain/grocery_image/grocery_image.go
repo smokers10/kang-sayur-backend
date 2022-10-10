@@ -9,9 +9,9 @@ type GroceryImage struct {
 }
 
 type GroceryImageRepository interface {
-	Create(request_body.CreateOrDeleteGroceryImage) error
+	Create(data *request_body.CreateOrDeleteGroceryImage) error
 
-	Delete(request_body.CreateOrDeleteGroceryImage) error
+	Delete(data *request_body.CreateOrDeleteGroceryImage) error
 
 	ReadByGroceryID(grocery_id string) ([]GroceryImage, error)
 }

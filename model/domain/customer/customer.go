@@ -34,11 +34,11 @@ type CustomerService interface {
 }
 
 type CustomerRepository interface {
-	Create(body *request_body.Register) (*Customer, error)
+	Create(data *request_body.Register) (*Customer, error)
 
 	ReadByEmail(email string) (*Customer, error)
 
-	UpdateProfile(body *request_body.UpdateProfile) error
+	UpdateProfile(data *request_body.UpdateProfile) error
 
 	Read() ([]Customer, error)
 }

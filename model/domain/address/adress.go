@@ -14,23 +14,23 @@ type Address struct {
 }
 
 type AddressService interface {
-	Create(request_body.CreateAddress) *response.HTTPResponse
+	Create(body *request_body.CreateAddress) *response.HTTPResponse
 
-	Read(request_body.DeleteOrReadAddress) *response.HTTPResponse
+	Read(body *request_body.DeleteOrReadAddress) *response.HTTPResponse
 
-	Update(request_body.UpdateAddress) *response.HTTPResponse
+	Update(body *request_body.UpdateAddress) *response.HTTPResponse
 
-	Delelete(request_body.DeleteOrReadAddress) *response.HTTPResponse
+	Delelete(body *request_body.DeleteOrReadAddress) *response.HTTPResponse
 }
 
 type AddressRepository interface {
-	Create(request_body.CreateAddress) (*Address, error)
+	Create(data *request_body.CreateAddress) (*Address, error)
 
-	Read(request_body.DeleteOrReadAddress) ([]Address, error)
+	Read(data *request_body.DeleteOrReadAddress) ([]Address, error)
 
-	ReadOne(request_body.ReadOne) (*Address, error)
+	ReadOne(data *request_body.ReadOne) (*Address, error)
 
-	Update(request_body.UpdateAddress) (*Address, error)
+	Update(data *request_body.UpdateAddress) (*Address, error)
 
-	Delelete(request_body.DeleteOrReadAddress) error
+	Delelete(data *request_body.DeleteOrReadAddress) error
 }

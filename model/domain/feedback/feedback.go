@@ -26,13 +26,13 @@ type FeedbackService interface {
 }
 
 type FeedbackRepository interface {
-	Create(body *request_body.Create) error
+	Create(data *request_body.Create) error
 
-	Read(body *request_body.ReadOnProduct) ([]Feedback, error)
+	Read(data *request_body.ReadOnProduct) ([]Feedback, error)
 
-	ReadOne(body *request_body.ReadOne) (*Feedback, error)
+	ReadOne(data *request_body.ReadOne) (*Feedback, error)
 
-	Update(body *request_body.UpdateOrDelete) error
+	Update(data *request_body.UpdateOrDelete) error
 
-	Delete(body *request_body.UpdateOrDelete) error
+	Delete(data *request_body.UpdateOrDelete) error
 }

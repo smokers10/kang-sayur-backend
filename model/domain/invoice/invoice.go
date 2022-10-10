@@ -30,9 +30,9 @@ type InvoiceService interface {
 type InvoiceRepository interface {
 	Create(data *Invoice) error
 
-	UpdateStatus(request_body.UpdateStatus) error
+	UpdateStatus(data *request_body.UpdateStatus) error
 
 	ReadAll() ([]Invoice, error)
 
-	ReadOne(body *request_body.ReadOne) (*Invoice, error)
+	ReadOne(data *request_body.ReadOne) (*Invoice, error)
 }
