@@ -6,7 +6,7 @@ import (
 )
 
 type Customer struct {
-	Id                 string `json:"id" bson:"_id"`
+	ID                 string `json:"id" bson:"_id"`
 	Name               string `json:"name" bson:"name"`
 	Phone              string `json:"phone" bson:"phone"`
 	Email              string `json:"email" bson:"email"`
@@ -36,9 +36,9 @@ type CustomerService interface {
 type CustomerRepository interface {
 	Create(data *request_body.Register) (*Customer, error)
 
-	ReadByEmail(email string) (*Customer, error)
+	ReadByEmail(email string) *Customer
 
 	UpdateProfile(data *request_body.UpdateProfile) error
 
-	Read() ([]Customer, error)
+	Read() []Customer
 }

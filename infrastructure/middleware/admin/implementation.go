@@ -6,13 +6,13 @@ import (
 	"kang-sayur-backend/model/domain/admin"
 )
 
-type adminMiddleware struct {
-	adminRepository admin.AdminRepository
-	jwt             jsonwebtoken.JWTContract
+type AdminMiddleware struct {
+	AdminRepository admin.AdminRepository
+	JWT             jsonwebtoken.JWTContract
 }
 
 // Process implements middleware.Contract
-func (am *adminMiddleware) Process(token string) *middleware.MiddlewareResponse {
+func (am *AdminMiddleware) Process(token string) *middleware.MiddlewareResponse {
 	// check token kosong
 	if token == "" {
 		return &middleware.MiddlewareResponse{
@@ -24,26 +24,27 @@ func (am *adminMiddleware) Process(token string) *middleware.MiddlewareResponse 
 	}
 
 	// verify token
-	payload, err := am.jwt.ParseToken(token)
+	payload, err := am.JWT.ParseToken(token)
 	if err != nil {
 		return &middleware.MiddlewareResponse{
 			Message: "kesalahan saat parsing token",
 			Status:  500,
-			Reason:  "error",
+			Is_pass: false,
+			Reason:  "error parsing token",
 		}
 	}
 
 	email := payload["email"].(string)
 
 	// check admin by email
-	admin := am.adminRepository.CheckEmail(email)
+	admin := am.AdminRepository.CheckEmail(email)
 
 	if admin.ID == "" || admin.Email == "" {
 		return &middleware.MiddlewareResponse{
 			Message: "admin tidak terdaftar",
 			Status:  404,
 			Is_pass: false,
-			Reason:  "admin tidak terdaftar",
+			Reason:  "admin tidak ada pada database",
 		}
 	}
 
@@ -62,9 +63,9 @@ func (am *adminMiddleware) Process(token string) *middleware.MiddlewareResponse 
 	}
 }
 
-func AdminMiddleware(repo *admin.AdminRepository, jwt *jsonwebtoken.JWTContract) middleware.Contract {
-	return &adminMiddleware{
-		adminRepository: *repo,
-		jwt:             *jwt,
+func Middleware(repo *admin.AdminRepository, jwt *jsonwebtoken.JWTContract) middleware.Contract {
+	return &AdminMiddleware{
+		AdminRepository: *repo,
+		JWT:             *jwt,
 	}
 }

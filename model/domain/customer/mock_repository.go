@@ -15,9 +15,9 @@ func (mr *MockRepository) Create(data *request_body.Register) (*Customer, error)
 	return args.Get(0).(*Customer), args.Error(1)
 }
 
-func (mr *MockRepository) ReadByEmail(email string) (*Customer, error) {
+func (mr *MockRepository) ReadByEmail(email string) *Customer {
 	args := mr.Mock.Called(email)
-	return args.Get(0).(*Customer), args.Error(1)
+	return args.Get(0).(*Customer)
 }
 
 func (mr *MockRepository) UpdateProfile(data *request_body.UpdateProfile) error {
@@ -25,7 +25,7 @@ func (mr *MockRepository) UpdateProfile(data *request_body.UpdateProfile) error 
 	return args.Error(0)
 }
 
-func (mr *MockRepository) Read() ([]Customer, error) {
+func (mr *MockRepository) Read() []Customer {
 	args := mr.Mock.Called()
-	return args.Get(0).([]Customer), args.Error(1)
+	return args.Get(0).([]Customer)
 }
