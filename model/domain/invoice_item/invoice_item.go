@@ -1,5 +1,7 @@
 package domain
 
+import "kang-sayur-backend/model/web/request_body/invoice"
+
 type InvoiceItem struct {
 	ID          string `json:"id" bson:"_id"`
 	ProductID   string `json:"product_id" bson:"product_id"`
@@ -9,6 +11,6 @@ type InvoiceItem struct {
 	InvoiceID   string `json:"invoice_id" bson:"invoice_id"`
 }
 
-type InvoiceItemRepository interface {
-	BulkCreate(data []InvoiceItem) error
+type InvoiceRepository interface {
+	BulkCreate(data []invoice.Item)
 }

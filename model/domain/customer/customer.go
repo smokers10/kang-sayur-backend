@@ -3,6 +3,7 @@ package customer
 import (
 	response "kang-sayur-backend/model/web"
 	request_body "kang-sayur-backend/model/web/request_body/customer"
+	verification_request_body "kang-sayur-backend/model/web/request_body/verification"
 )
 
 type Customer struct {
@@ -31,6 +32,10 @@ type CustomerService interface {
 	ValidateAccount(body *request_body.ValidateAccount) *response.HTTPResponse
 
 	ReadAll() *response.HTTPResponse
+
+	RequestVerification(body *verification_request_body.RequestVerification) *response.HTTPResponse
+
+	VerifyVerification(body *verification_request_body.Verify) *response.HTTPResponse
 }
 
 type CustomerRepository interface {

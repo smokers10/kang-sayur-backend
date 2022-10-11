@@ -16,10 +16,10 @@ type AdminService interface {
 	RequestLogin(body request_body.LoginRequest) response.HTTPResponse
 
 	Login(body request_body.Login) response.HTTPResponse
-
-	Logout() response.HTTPResponse
 }
 
 type AdminRepository interface {
 	CheckEmail(email string) *Admin
+
+	UpdatePassword(admin_id string, password string) error
 }

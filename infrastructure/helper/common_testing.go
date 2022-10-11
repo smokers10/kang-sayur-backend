@@ -47,12 +47,10 @@ func (ut *unitTesting) CommonAssertion(t *testing.T, expected *Expected, actual 
 	// response should not empty
 	assert.NotEmpty(t, actual.Message)
 	assert.NotEmpty(t, actual.Status)
-	assert.NotEmpty(t, actual.IsSuccess)
 
 	// response  expected detail must match w/ actual response
 	assert.Equal(t, expected.Message, actual.Message)
 	assert.Equal(t, expected.IsSuccess, actual.IsSuccess)
-	assert.Equal(t, expected.Status, actual.Status)
 
 	// if token must be checked
 	if option.TokenChecking {

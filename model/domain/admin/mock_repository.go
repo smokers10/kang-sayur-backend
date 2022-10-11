@@ -11,3 +11,9 @@ func (mr *MockRepository) CheckEmail(email string) *Admin {
 
 	return arg.Get(0).(*Admin)
 }
+
+func (mr *MockRepository) UpdatePassword(admin_id string, password string) error {
+	args := mr.Mock.Called(admin_id, password)
+
+	return args.Error(0)
+}
