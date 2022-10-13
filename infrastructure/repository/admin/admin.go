@@ -20,8 +20,13 @@ func (r *adminRepository) UpdatePassword(admin_id string, password string) error
 	defer cancel()
 
 	aid, _ := primitive.ObjectIDFromHex(admin_id)
+	document := bson.M{
+		"$set": bson.M{
+			"password": password,
+		},
+	}
 
-	if _, err := r.collection.UpdateOne(ctx, bson.M{"_id": aid}, bson.M{"password": password}); err != nil {
+	if _, err := r.collection.UpdateOne(ctx, bson.M{"_id": aid}, document); err != nil {
 		return err
 	}
 
@@ -33,7 +38,7 @@ func (r *adminRepository) CheckEmail(email string) (result *admin.Admin) {
 	ctx, cancel := helper.InitCtxTimeout()
 	defer cancel()
 
-	if err := r.collection.FindOne(ctx, bson.M{"email": email}).Decode(result); err != nil {
+	if err := r.collection.FindOne(ctx, bson.M{"email": email}).Decode(&result); err != nil {
 		fmt.Println(err)
 		return &admin.Admin{}
 	}

@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	mailer "kang-sayur-backend/infrastructure/SMTP"
 	"kang-sayur-backend/infrastructure/encryption"
 	"kang-sayur-backend/infrastructure/identifier"
@@ -80,6 +81,7 @@ func (s *adminService) RequestLogin(body request_body.LoginRequest) response.HTT
 
 	// update password
 	if err := s.adminRepository.UpdatePassword(admin.ID, safePassword); err != nil {
+		fmt.Print(err)
 		return response.HTTPResponse{
 			Message: "kesalahan saat request",
 			Status:  500,

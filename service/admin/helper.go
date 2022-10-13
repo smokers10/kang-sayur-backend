@@ -4,7 +4,9 @@ import "fmt"
 
 func AdminPasswordEmail(password string) string {
 	return fmt.Sprintf(`
-		OTP %s \n
+		Password %s <br>
+		<h1>
 		Jangan sampai orang lain tau!!!
+		</h1>
 	`, password)
 }

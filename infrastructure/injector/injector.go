@@ -2,6 +2,7 @@ package injector
 
 import (
 	mailer "kang-sayur-backend/infrastructure/SMTP"
+	"kang-sayur-backend/infrastructure/database"
 	"kang-sayur-backend/infrastructure/encryption"
 	"kang-sayur-backend/infrastructure/identifier"
 	jsonwebtoken "kang-sayur-backend/infrastructure/json_web_token"
@@ -24,16 +25,25 @@ import (
 	recipeimage "kang-sayur-backend/model/domain/recipe_images"
 	subadmin "kang-sayur-backend/model/domain/sub_admin"
 	verification "kang-sayur-backend/model/domain/verification"
+
+	bcrypt "kang-sayur-backend/infrastructure/encryption/bcrypt"
+	uuid "kang-sayur-backend/infrastructure/identifier/uuid"
+	jwt "kang-sayur-backend/infrastructure/json_web_token/jwt"
+	repoAdmin "kang-sayur-backend/infrastructure/repository/admin"
+
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-type injectorProvider struct {
+type InjectorProvider struct {
+	Repository *RepositoryProvider
 	Encryption encryption.EncryptionContract
 	Identifier identifier.IdentifierContract
 	JWT        jsonwebtoken.JWTContract
 	SMTP       mailer.Contract
+	Database   *mongo.Database
 }
 
-type repositoryProvider struct {
+type RepositoryProvider struct {
 	Address        address.AddressRepository
 	Admin          admin.AdminRepository
 	Cart           cart.CartRepository
@@ -53,4 +63,44 @@ type repositoryProvider struct {
 	RecipeImage    recipeimage.RecipeImagesRepository
 	SubAdmin       subadmin.SubAdminRepository
 	Verification   verification.VerificationRepository
+}
+
+func repositoryInjector(db *mongo.Database) *RepositoryProvider {
+	return &RepositoryProvider{
+		Address:        nil,
+		Admin:          repoAdmin.AdminRepository(db),
+		Cart:           nil,
+		Category:       nil,
+		Customer:       nil,
+		Domicile:       nil,
+		Feedback:       nil,
+		ForgotPassword: nil,
+		Grocery:        nil,
+		GroceryImage:   nil,
+		GroceryPrice:   nil,
+		Invoice:        nil,
+		InvoiceItem:    nil,
+		Permission:     nil,
+		Recipe:         nil,
+		RecipeDetail:   nil,
+		RecipeImage:    nil,
+		SubAdmin:       nil,
+		Verification:   nil,
+	}
+}
+
+func Injector() *InjectorProvider {
+	db, err := database.MongoInit().MongoDB()
+	if err != nil {
+		panic(err)
+	}
+
+	return &InjectorProvider{
+		Repository: repositoryInjector(db),
+		Encryption: bcrypt.Bcrypt(),
+		Identifier: uuid.UUID(),
+		JWT:        jwt.JsonWebToken(),
+		Database:   db,
+		SMTP:       mailer.NativeSMTP(),
+	}
 }
