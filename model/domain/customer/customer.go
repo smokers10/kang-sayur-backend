@@ -19,7 +19,7 @@ type Customer struct {
 type CustomerService interface {
 	Register(body *request_body.Register) *response.HTTPResponse
 
-	login(body *request_body.Login) *response.HTTPResponse
+	Login(body *request_body.Login) *response.HTTPResponse
 
 	ViewProfile(body *request_body.ViewProfile) *response.HTTPResponse
 
