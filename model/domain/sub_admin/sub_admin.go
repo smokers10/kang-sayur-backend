@@ -1,4 +1,4 @@
-package domain
+package subadmin
 
 import (
 	response "kang-sayur-backend/model/web"
@@ -15,6 +15,8 @@ type SubAdmin struct {
 }
 
 type SubAdminService interface {
+	Login(body *request_body.Login) response.HTTPResponse
+
 	Create(body *request_body.Create) response.HTTPResponse
 
 	Read() response.HTTPResponse
@@ -38,4 +40,6 @@ type SubAdminRepository interface {
 	UpdateStatus(data *request_body.SetPermission) error
 
 	Delete(data *request_body.Delete) error
+
+	ReadByEmail(email string) (*SubAdmin, error)
 }

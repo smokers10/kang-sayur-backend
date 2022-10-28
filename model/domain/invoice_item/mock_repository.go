@@ -1,4 +1,4 @@
-package domain
+package invoiceitem
 
 import "github.com/stretchr/testify/mock"
 

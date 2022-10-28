@@ -1,4 +1,4 @@
-package domain
+package permission
 
 type Permission struct {
 	ID             string `json:"id" bson:"_id"`

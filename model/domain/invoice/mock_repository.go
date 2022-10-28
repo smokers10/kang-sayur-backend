@@ -1,4 +1,4 @@
-package domain
+package invoice
 
 import (
 	request_body "kang-sayur-backend/model/web/request_body/invoice"

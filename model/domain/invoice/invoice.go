@@ -1,4 +1,4 @@
-package domain
+package invoice
 
 import (
 	response "kang-sayur-backend/model/web"

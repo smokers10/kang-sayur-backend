@@ -11,10 +11,9 @@ func (mr *MockRepository) Upsert(token string, customer_id string, verification_
 	return args.Error(0)
 }
 
-func (mr *MockRepository) ReadOne(token string, customer_id string) (*Verification, error) {
+func (mr *MockRepository) ReadOne(token string, customer_id string) *Verification {
 	args := mr.Mock.Called(token, customer_id)
-	return args.Get(0).(*Verification), args.Error(0)
-
+	return args.Get(0).(*Verification)
 }
 
 func (mr *MockRepository) Delete(customer_id string) error {

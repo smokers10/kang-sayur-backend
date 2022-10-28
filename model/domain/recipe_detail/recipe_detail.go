@@ -1,4 +1,4 @@
-package domain
+package recipedetail
 
 import request_body "kang-sayur-backend/model/web/request_body/recipe"
 

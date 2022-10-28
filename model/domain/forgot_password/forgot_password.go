@@ -21,7 +21,7 @@ type ForgotPasswordService interface {
 type ForgotPasswordRepository interface {
 	Upsert(token string, user_id string, code string) error
 
-	ReadOne(token string) error
+	ReadOne(token string) *ForgotPassword
 
 	Delete(token string) error
 }

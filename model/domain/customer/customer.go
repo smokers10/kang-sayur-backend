@@ -29,8 +29,6 @@ type CustomerService interface {
 
 	ResetPassword(body *request_body.ResetPassword) *response.HTTPResponse
 
-	ValidateAccount(body *request_body.ValidateAccount) *response.HTTPResponse
-
 	ReadAll() *response.HTTPResponse
 
 	RequestVerification(body *verification_request_body.RequestVerification) *response.HTTPResponse
@@ -43,7 +41,13 @@ type CustomerRepository interface {
 
 	ReadByEmail(email string) *Customer
 
+	ReadByID(id string) *Customer
+
 	UpdateProfile(data *request_body.UpdateProfile) error
+
+	UpdatePassword(password string, customer_id string) error
+
+	VerifyVerification(customer_id string) error
 
 	Read() []Customer
 }

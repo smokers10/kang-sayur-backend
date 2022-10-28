@@ -6,7 +6,7 @@ type Create struct {
 	UnitType     string `json:"unit_type"`
 	PointOfSales string `json:"point_of_sales"`
 	CategoryID   string `json:"category_id"`
-	PriceID      string `json:"price_id"`
+	Price        string `json:"price"`
 }
 
 type UpdateOrDelete struct {
@@ -16,7 +16,7 @@ type UpdateOrDelete struct {
 	UnitType     string `json:"unit_type"`
 	PointOfSales string `json:"point_of_sales"`
 	CategoryID   string `json:"category_id"`
-	PriceID      string `json:"price_id"`
+	Price        string `json:"price"`
 }
 
 type ByCategory struct {

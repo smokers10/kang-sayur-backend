@@ -11,9 +11,9 @@ func (mr *MockRepository) Upsert(token string, user_id string, code string) erro
 	return args.Error(0)
 }
 
-func (mr *MockRepository) ReadOne(token string) error {
+func (mr *MockRepository) ReadOne(token string) *ForgotPassword {
 	args := mr.Mock.Called(token)
-	return args.Error(0)
+	return args.Get(0).(*ForgotPassword)
 }
 
 func (mr *MockRepository) Delete(token string) error {

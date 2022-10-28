@@ -7,7 +7,7 @@ type MockContract struct {
 }
 
 func (m *MockContract) Generate() string {
-	args := m.Mock.Called(0)
+	args := m.Mock.Called()
 
 	return args.String(0)
 }

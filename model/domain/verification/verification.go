@@ -10,7 +10,7 @@ type Verification struct {
 type VerificationRepository interface {
 	Upsert(token string, customer_id string, verification_code string) error
 
-	ReadOne(token string, customer_id string) (*Verification, error)
+	ReadOne(token string, customer_id string) *Verification
 
 	Delete(customer_id string) error
 }

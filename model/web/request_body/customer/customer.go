@@ -10,6 +10,7 @@ type Register struct {
 }
 
 type UpdateProfile struct {
+	CustomerID string `json:"customer_id" bson:"customer_id"`
 	Name       string `json:"name" bson:"name"`
 	Phone      string `json:"phone" bson:"phone"`
 	DomicileID string `json:"domicile_id" bson:"domicile_id"`

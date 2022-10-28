@@ -2,11 +2,11 @@ package service
 
 import (
 	"errors"
-	mailer "kang-sayur-backend/infrastructure/SMTP"
 	"kang-sayur-backend/infrastructure/encryption"
 	"kang-sayur-backend/infrastructure/helper"
 	"kang-sayur-backend/infrastructure/identifier"
 	jsonwebtoken "kang-sayur-backend/infrastructure/json_web_token"
+	"kang-sayur-backend/infrastructure/mailer"
 	"kang-sayur-backend/model/domain/admin"
 	response "kang-sayur-backend/model/web"
 	requestbody "kang-sayur-backend/model/web/request_body/admin"

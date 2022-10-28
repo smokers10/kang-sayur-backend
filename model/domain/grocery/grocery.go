@@ -12,7 +12,7 @@ type Grocery struct {
 	UnitType     string `json:"unit_type" bson:"unit_type"`
 	PointOfSales string `json:"point_of_sales" bson:"point_of_sales"`
 	CategoryID   string `json:"category_id" bson:"category_id"`
-	PriceID      string `json:"price_id" bson:"price_id"`
+	Price        int    `json:"price" bson:"price"`
 }
 
 type GroceryService interface {

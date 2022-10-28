@@ -1,4 +1,4 @@
-package domain
+package permission
 
 import "github.com/stretchr/testify/mock"
 

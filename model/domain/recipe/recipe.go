@@ -1,4 +1,4 @@
-package domain
+package recipe
 
 import (
 	response "kang-sayur-backend/model/web"

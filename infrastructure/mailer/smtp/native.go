@@ -1,8 +1,9 @@
-package mailer
+package smtp
 
 import (
 	"fmt"
 	"kang-sayur-backend/infrastructure/configuration"
+	"kang-sayur-backend/infrastructure/mailer"
 	"net/smtp"
 )
 
@@ -10,7 +11,7 @@ type nativeSMTP struct {
 	smtpConfiguration configuration.SMTP
 }
 
-func NativeSMTP() Contract {
+func NativeSMTP() mailer.Contract {
 	configuraton := configuration.ReadConfiguration()
 	return &nativeSMTP{smtpConfiguration: configuraton.SMTP}
 }

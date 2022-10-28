@@ -2,10 +2,11 @@ package service
 
 import (
 	"fmt"
-	mailer "kang-sayur-backend/infrastructure/SMTP"
 	"kang-sayur-backend/infrastructure/encryption"
 	"kang-sayur-backend/infrastructure/identifier"
+	infrastructures "kang-sayur-backend/infrastructure/injector"
 	jsonwebtoken "kang-sayur-backend/infrastructure/json_web_token"
+	"kang-sayur-backend/infrastructure/mailer"
 	"kang-sayur-backend/model/domain/admin"
 	response "kang-sayur-backend/model/web"
 	request_body "kang-sayur-backend/model/web/request_body/admin"
@@ -104,12 +105,12 @@ func (s *adminService) RequestLogin(body request_body.LoginRequest) response.HTT
 	}
 }
 
-func AdminService(repository *admin.AdminRepository, jwt *jsonwebtoken.JWTContract, encrypt *encryption.EncryptionContract, mailer *mailer.Contract, identifier *identifier.IdentifierContract) admin.AdminService {
+func AdminService(infra *infrastructures.Infrastructures) admin.AdminService {
 	return &adminService{
-		adminRepository: *repository,
-		jwt:             *jwt,
-		encrypt:         *encrypt,
-		mailer:          *mailer,
-		identifier:      *identifier,
+		adminRepository: infra.Repositories().Admin,
+		jwt:             *infra.JsonWebToken(),
+		encrypt:         *infra.Encryption(),
+		mailer:          *infra.Mailer(),
+		identifier:      *infra.Identifier(),
 	}
 }
