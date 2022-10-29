@@ -20,7 +20,7 @@ type AddressService interface {
 
 	Update(body *request_body.UpdateAddress) *response.HTTPResponse
 
-	Delelete(body *request_body.DeleteOrReadAddress) *response.HTTPResponse
+	Delete(body *request_body.DeleteOrReadAddress) *response.HTTPResponse
 }
 
 type AddressRepository interface {
@@ -32,5 +32,5 @@ type AddressRepository interface {
 
 	Update(data *request_body.UpdateAddress) (*Address, error)
 
-	Delelete(data *request_body.DeleteOrReadAddress) error
+	Delete(data *request_body.DeleteOrReadAddress) error
 }

@@ -17,7 +17,7 @@ func (*addressRepository) Create(data *request_body.CreateAddress) (*address.Add
 }
 
 // Delelete implements address.AddressRepository
-func (*addressRepository) Delelete(data *request_body.DeleteOrReadAddress) error {
+func (*addressRepository) Delete(data *request_body.DeleteOrReadAddress) error {
 	panic("unimplemented")
 }
 
