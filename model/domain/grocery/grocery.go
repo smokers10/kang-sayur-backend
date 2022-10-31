@@ -31,14 +31,10 @@ type GroceryService interface {
 	Update(body *request_body.UpdateOrDelete) *response.HTTPResponse
 
 	Delete(body *request_body.UpdateOrDelete) *response.HTTPResponse
-
-	SetPrice(body *request_body.SetOrUpdatePrice) *response.HTTPResponse
-
-	UpdatePrice(body *request_body.SetOrUpdatePrice) *response.HTTPResponse
 }
 
 type GroceryRepository interface {
-	Create(data *request_body.Create) error
+	Create(data *request_body.Create) (*Grocery, error)
 
 	Read(data *request_body.Create) ([]Grocery, error)
 

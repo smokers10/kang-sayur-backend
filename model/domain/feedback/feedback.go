@@ -26,7 +26,7 @@ type FeedbackService interface {
 }
 
 type FeedbackRepository interface {
-	Create(data *request_body.Create) error
+	Create(data *request_body.Create) (*Feedback, error)
 
 	Read(data *request_body.ReadOnProduct) ([]Feedback, error)
 

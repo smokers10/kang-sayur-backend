@@ -12,7 +12,7 @@ type groceryRepository struct {
 }
 
 // Create implements grocery.GroceryRepository
-func (groceryRepository) Create(data *request_body.Create) error {
+func (groceryRepository) Create(data *request_body.Create) (*grocery.Grocery, error) {
 	panic("unimplemented")
 }
 
@@ -52,5 +52,5 @@ func (groceryRepository) Update(data *request_body.UpdateOrDelete) error {
 }
 
 func GroceryRepository(db *mongo.Database) grocery.GroceryRepository {
-	return groceryRepository{collection: *db.Collection("grocery")}
+	return &groceryRepository{collection: *db.Collection("grocery")}
 }

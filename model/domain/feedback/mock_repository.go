@@ -10,9 +10,9 @@ type MockRepository struct {
 	Mock mock.Mock
 }
 
-func (mr *MockRepository) Create(data *request_body.Create) error {
+func (mr *MockRepository) Create(data *request_body.Create) (*Feedback, error) {
 	args := mr.Mock.Called(data)
-	return args.Error(0)
+	return args.Get(0).(*Feedback), args.Error(1)
 }
 
 func (mr *MockRepository) Read(data *request_body.ReadOnProduct) ([]Feedback, error) {

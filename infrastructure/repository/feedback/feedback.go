@@ -12,7 +12,7 @@ type feedbackRepository struct {
 }
 
 // Create implements feedback.FeedbackRepository
-func (*feedbackRepository) Create(data *request_body.Create) error {
+func (*feedbackRepository) Create(data *request_body.Create) (*feedback.Feedback, error) {
 	panic("unimplemented")
 }
 
