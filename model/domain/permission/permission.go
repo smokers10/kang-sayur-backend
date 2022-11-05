@@ -1,5 +1,7 @@
 package permission
 
+import request_body "kang-sayur-backend/model/web/request_body/sub_admin"
+
 type Permission struct {
 	ID             string `json:"id" bson:"_id"`
 	MajBarang      bool   `json:"manajemen_barang" bson:"manajemen_barang"`
@@ -11,7 +13,7 @@ type Permission struct {
 }
 
 type PermissionRepository interface {
-	Upsert(data *Permission) error
+	Upsert(data *request_body.SetPermission) error
 
 	ReadOne(sub_admin_id string) (*Permission, error)
 }

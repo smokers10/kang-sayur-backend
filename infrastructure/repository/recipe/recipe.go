@@ -11,13 +11,23 @@ type recipeRepository struct {
 	collection mongo.Collection
 }
 
-// ByName implements recipe.RecipeRepository
-func (*recipeRepository) ByName(data *request_body.Searching) ([]recipe.Recipe, error) {
+// Update implements recipe.RecipeRepository
+func (*recipeRepository) Update(data *request_body.Update) error {
 	panic("unimplemented")
 }
 
 // Create implements recipe.RecipeRepository
-func (*recipeRepository) Create(data *request_body.Create) error {
+func (*recipeRepository) Create(data *request_body.Create) (*recipe.Recipe, error) {
+	panic("unimplemented")
+}
+
+// Delete implements recipe.RecipeRepository
+func (*recipeRepository) Delete(data *request_body.Delete) error {
+	panic("unimplemented")
+}
+
+// ByName implements recipe.RecipeRepository
+func (*recipeRepository) ByName(data *request_body.Searching) ([]recipe.Recipe, error) {
 	panic("unimplemented")
 }
 

@@ -15,19 +15,19 @@ type SubAdmin struct {
 }
 
 type SubAdminService interface {
-	Login(body *request_body.Login) response.HTTPResponse
+	Login(body *request_body.Login) *response.HTTPResponse
 
-	Create(body *request_body.Create) response.HTTPResponse
+	Create(body *request_body.Create) *response.HTTPResponse
 
-	Read() response.HTTPResponse
+	Read() *response.HTTPResponse
 
-	Update(body *request_body.Update) response.HTTPResponse
+	Update(body *request_body.Update) *response.HTTPResponse
 
-	UpdateStatus(body *request_body.UpdateStatus) response.HTTPResponse
+	UpdateStatus(body *request_body.UpdateStatus) *response.HTTPResponse
 
-	Delete(body *request_body.Delete) response.HTTPResponse
+	Delete(body *request_body.Delete) *response.HTTPResponse
 
-	SetPermission(body *request_body.SetPermission) response.HTTPResponse
+	SetPermission(body *request_body.SetPermission) *response.HTTPResponse
 }
 
 type SubAdminRepository interface {
@@ -37,7 +37,7 @@ type SubAdminRepository interface {
 
 	Update(data *request_body.Update) error
 
-	UpdateStatus(data *request_body.SetPermission) error
+	UpdateStatus(data *request_body.UpdateStatus) error
 
 	Delete(data *request_body.Delete) error
 

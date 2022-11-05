@@ -6,6 +6,8 @@ import (
 	"kang-sayur-backend/infrastructure/database"
 	"kang-sayur-backend/infrastructure/encryption"
 	bcrypt "kang-sayur-backend/infrastructure/encryption/bcrypt"
+	"kang-sayur-backend/infrastructure/filemanager"
+	"kang-sayur-backend/infrastructure/filemanager/native"
 	"kang-sayur-backend/infrastructure/identifier"
 	uuid "kang-sayur-backend/infrastructure/identifier/uuid"
 	jsonwebtoken "kang-sayur-backend/infrastructure/json_web_token"
@@ -51,6 +53,11 @@ func (sp *Infrastructures) Mailer() *mailer.Contract {
 func (sp *Infrastructures) CodeGenerator() *codegenerator.CodeGeneratorContract {
 	codegen := crypto.CryptoRand()
 	return &codegen
+}
+
+func (sp *Infrastructures) Filemanager() *filemanager.FilemanagerContract {
+	fm := native.NativeFM()
+	return &fm
 }
 
 func InfrastructureInjector() *Infrastructures {

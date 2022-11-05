@@ -11,6 +11,11 @@ type subAdminRepository struct {
 	collection mongo.Collection
 }
 
+// UpdateStatus implements subadmin.SubAdminRepository
+func (subAdminRepository) UpdateStatus(data *request_body.UpdateStatus) error {
+	panic("unimplemented")
+}
+
 // ReadByEmail implements subadmin.SubAdminRepository
 func (subAdminRepository) ReadByEmail(email string) (*subadmin.SubAdmin, error) {
 	panic("unimplemented")
@@ -33,11 +38,6 @@ func (subAdminRepository) Read() ([]subadmin.SubAdmin, error) {
 
 // Update implements subadmin.SubAdminRepository
 func (subAdminRepository) Update(data *request_body.Update) error {
-	panic("unimplemented")
-}
-
-// UpdateStatus implements subadmin.SubAdminRepository
-func (subAdminRepository) UpdateStatus(data *request_body.SetPermission) error {
 	panic("unimplemented")
 }
 

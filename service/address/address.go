@@ -52,7 +52,7 @@ func (as *addressService) Read(body *request_body.DeleteOrReadAddress) *response
 	if err != nil {
 		return &response.HTTPResponse{
 			Message: "kesalahan saat pengambilan data",
-			Status:  200,
+			Status:  500,
 		}
 	}
 

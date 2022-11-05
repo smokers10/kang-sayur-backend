@@ -9,6 +9,7 @@ type MiddlewareResponse struct {
 		Id    string `json:"id,omitempty"`
 		Email string `json:"email,omitempty"`
 	}
+	Permission interface{}
 }
 
 type Contract interface {

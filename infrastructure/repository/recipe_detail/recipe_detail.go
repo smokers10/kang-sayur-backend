@@ -12,7 +12,7 @@ type recipeDetailRepository struct {
 }
 
 // Create implements recipedetail.RecipeDetailRepository
-func (*recipeDetailRepository) Create(data *request_body.AddDetail) error {
+func (*recipeDetailRepository) Create(data *request_body.AddDetail) (*recipedetail.RecipeDetail, error) {
 	panic("unimplemented")
 }
 

@@ -43,11 +43,15 @@ type RecipeService interface {
 }
 
 type RecipeRepository interface {
-	Create(data *request_body.Create) error
+	Create(data *request_body.Create) (*Recipe, error)
 
 	ReadAll() ([]Recipe, error)
 
 	ReadDetail(data *request_body.RecipeDetail) (*Recipe, error)
 
 	ByName(data *request_body.Searching) ([]Recipe, error)
+
+	Delete(data *request_body.Delete) error
+
+	Update(data *request_body.Update) error
 }

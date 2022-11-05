@@ -25,7 +25,7 @@ func (mr *MockRepository) Update(data *request_body.Update) error {
 	return args.Error(0)
 }
 
-func (mr *MockRepository) UpdateStatus(data *request_body.SetPermission) error {
+func (mr *MockRepository) UpdateStatus(data *request_body.UpdateStatus) error {
 	args := mr.Mock.Called(data)
 	return args.Error(0)
 }
@@ -33,4 +33,9 @@ func (mr *MockRepository) UpdateStatus(data *request_body.SetPermission) error {
 func (mr *MockRepository) Delete(data *request_body.Delete) error {
 	args := mr.Mock.Called(data)
 	return args.Error(0)
+}
+
+func (mr *MockRepository) ReadByEmail(email string) (*SubAdmin, error) {
+	args := mr.Mock.Called(email)
+	return args.Get(0).(*SubAdmin), args.Error(1)
 }

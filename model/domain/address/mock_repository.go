@@ -10,32 +10,27 @@ type MockRepository struct {
 	Mock mock.Mock
 }
 
-func (mr *MockRepository) Create(body *request_body.CreateAddress) (*Address, error) {
-	args := mr.Mock.Called(body)
-
+func (mr *MockRepository) Create(data *request_body.CreateAddress) (*Address, error) {
+	args := mr.Mock.Called(data)
 	return args.Get(0).(*Address), args.Error(1)
 }
 
-func (mr *MockRepository) Read(body *request_body.DeleteOrReadAddress) ([]Address, error) {
-	args := mr.Mock.Called(body)
-
+func (mr *MockRepository) Read(data *request_body.DeleteOrReadAddress) ([]Address, error) {
+	args := mr.Mock.Called(data)
 	return args.Get(0).([]Address), args.Error(1)
 }
 
-func (mr *MockRepository) ReadOne(body *request_body.ReadOne) (*Address, error) {
-	args := mr.Mock.Called(body)
-
+func (mr *MockRepository) ReadOne(data *request_body.ReadOne) (*Address, error) {
+	args := mr.Mock.Called(data)
 	return args.Get(0).(*Address), args.Error(1)
 }
 
-func (mr *MockRepository) Update(body *request_body.UpdateAddress) (*Address, error) {
-	args := mr.Mock.Called(body)
-
+func (mr *MockRepository) Update(data *request_body.UpdateAddress) (*Address, error) {
+	args := mr.Mock.Called(data)
 	return args.Get(0).(*Address), args.Error(1)
 }
 
-func (mr *MockRepository) Delelete(body *request_body.DeleteOrReadAddress) error {
-	args := mr.Mock.Called(body)
-
+func (mr *MockRepository) Delete(data *request_body.DeleteOrReadAddress) error {
+	args := mr.Mock.Called(data)
 	return args.Error(0)
 }

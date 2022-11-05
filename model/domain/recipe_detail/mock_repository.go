@@ -15,9 +15,9 @@ func (mr *MockRepository) Read(recipe_id string) ([]RecipeDetail, error) {
 	return args.Get(0).([]RecipeDetail), args.Error(1)
 }
 
-func (mr *MockRepository) Create(data *request_body.AddDetail) error {
+func (mr *MockRepository) Create(data *request_body.AddDetail) (*RecipeDetail, error) {
 	args := mr.Mock.Called(data)
-	return args.Error(0)
+	return args.Get(0).(*RecipeDetail), args.Error(1)
 }
 
 func (mr *MockRepository) Update(data *request_body.UpdateOrDeleteDetail) error {

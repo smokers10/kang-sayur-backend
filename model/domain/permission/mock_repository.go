@@ -1,12 +1,16 @@
 package permission
 
-import "github.com/stretchr/testify/mock"
+import (
+	request_body "kang-sayur-backend/model/web/request_body/sub_admin"
+
+	"github.com/stretchr/testify/mock"
+)
 
 type MockRepository struct {
 	Mock mock.Mock
 }
 
-func (mr *MockRepository) Upsert(data *Permission) error {
+func (mr *MockRepository) Upsert(data *request_body.SetPermission) error {
 	args := mr.Mock.Called(data)
 	return args.Error(0)
 }

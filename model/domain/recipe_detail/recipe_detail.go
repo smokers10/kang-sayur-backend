@@ -12,7 +12,7 @@ type RecipeDetail struct {
 type RecipeDetailRepository interface {
 	Read(recipe_id string) ([]RecipeDetail, error)
 
-	Create(data *request_body.AddDetail) error
+	Create(data *request_body.AddDetail) (*RecipeDetail, error)
 
 	Update(data *request_body.UpdateOrDeleteDetail) error
 

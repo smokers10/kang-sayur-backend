@@ -75,6 +75,13 @@ func (ut *unitTesting) MiddlewareAssertion(t *testing.T, expected *middleware.Mi
 	assert.Equal(t, expected.Is_pass, actual.Is_pass)
 	assert.Equal(t, expected.Reason, actual.Reason)
 	assert.Equal(t, expected.Claim, actual.Claim)
-	assert.Equal(t, expected.Claim.Email, actual.Claim.Email)
-	assert.Equal(t, expected.Claim.Id, actual.Claim.Id)
+
+	// test claim
+	if actual.Claim.Email != "" {
+		assert.NotEmpty(t, expected.Claim.Email)
+	}
+
+	if actual.Claim.Id != "" {
+		assert.NotEmpty(t, expected.Claim.Id)
+	}
 }

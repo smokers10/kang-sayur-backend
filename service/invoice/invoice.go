@@ -12,27 +12,38 @@ type invoiceService struct {
 }
 
 // Cancel implements invoice.InvoiceService
-func (*invoiceService) Cancel(body *request_body.UpdateStatus) *response.HTTPResponse {
-	panic("unimplemented")
+func (is *invoiceService) Cancel(body *request_body.UpdateStatus) *response.HTTPResponse {
+	if err := is.repository.UpdateStatus(body); err != nil {
+		return &response.HTTPResponse{
+			Message: "Kesalahan saat update status",
+			Status:  500,
+		}
+	}
+
+	return &response.HTTPResponse{
+		Message:   "invoice berhasil dibatalkan",
+		Status:    200,
+		IsSuccess: true,
+	}
 }
 
 // Checkout implements invoice.InvoiceService
-func (*invoiceService) Checkout(body *request_body.Checkout) *response.HTTPResponse {
+func (is *invoiceService) Checkout(body *request_body.Checkout) *response.HTTPResponse {
 	panic("unimplemented")
 }
 
 // Pay implements invoice.InvoiceService
-func (*invoiceService) Pay(body *request_body.Pay) *response.HTTPResponse {
+func (is *invoiceService) Pay(body *request_body.Pay) *response.HTTPResponse {
 	panic("unimplemented")
 }
 
 // ReadAll implements invoice.InvoiceService
-func (*invoiceService) ReadAll() *response.HTTPResponse {
+func (is *invoiceService) ReadAll() *response.HTTPResponse {
 	panic("unimplemented")
 }
 
 // ReadOne implements invoice.InvoiceService
-func (*invoiceService) ReadOne(body *request_body.ReadOne) *response.HTTPResponse {
+func (is *invoiceService) ReadOne(body *request_body.ReadOne) *response.HTTPResponse {
 	panic("unimplemented")
 }
 
