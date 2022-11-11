@@ -41,7 +41,7 @@ func (fs *feedbackService) Delete(body *request_body.UpdateOrDelete) *response.H
 	}
 
 	return &response.HTTPResponse{
-		Message:   "tibal balik berhasil dihapus",
+		Message:   "timbal balik berhasil dihapus",
 		Status:    200,
 		IsSuccess: true,
 	}

@@ -44,11 +44,11 @@ func UnitTesting() *unitTesting {
 }
 
 func (ut *unitTesting) CommonAssertion(t *testing.T, expected *Expected, actual *web.HTTPResponse, option *Options) {
-	// response should not empty
+	// response that should not empty
 	assert.NotEmpty(t, actual.Message)
 	assert.NotEmpty(t, actual.Status)
 
-	// response  expected detail must match w/ actual response
+	// response that should match w/ actual response
 	assert.Equal(t, expected.Message, actual.Message)
 	assert.Equal(t, expected.IsSuccess, actual.IsSuccess)
 
